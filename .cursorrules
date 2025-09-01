@@ -1,0 +1,67 @@
+# .cursorrules - Entwicklungsleitplanken für mindull App
+
+## Sicherheit & Secrets
+- Keine API-Keys, Passwörter oder Secrets im Code
+- Verwende .env Dateien für Konfiguration
+- Secrets nur über secure storage (Keychain/Keystore)
+
+## Architektur & Schichtentrennung
+- Klare Trennung: UI → Services → Data Layer
+- Services sind state-agnostic
+- Keine direkten API-Calls in Komponenten
+- Verwende Repository Pattern für Datenzugriff
+
+## Accessibility (A11y)
+- Alle interaktiven Elemente brauchen accessibilityLabel
+- Verwende semantische HTML-Rollen
+- Teste mit Screen Reader (iOS VoiceOver, Android TalkBack)
+- Mindest-Touch-Target-Größe: 44pt
+
+## Testing
+- Unit Tests für alle Services und Utils
+- Integration Tests für kritische User Flows
+- Jest + React Native Testing Library
+- Minimum 80% Code Coverage
+
+## Offline-First & Queue
+- Alle User-Aktionen müssen offline funktionieren
+- Implementiere Offline-Queue für Sync
+- Graceful Degradation bei Netzwerkfehlern
+- Local Storage als Single Source of Truth
+
+## Code Style
+- TypeScript strict mode
+- ESLint + Prettier konfiguriert
+- Verwende React Hooks pattern
+- Functional Components bevorzugt
+
+## Performance
+- Lazy Loading für Screens
+- Optimierte Bilder (WebP)
+- React.memo für teure Komponenten
+- Keine synchronen Storage-Zugriffe
+
+## Datenstrukturen
+- Immutable Data Updates
+- Normalisierte State Structure
+- Redux/Zustand für Global State
+- React Query für Server State
+
+## Error Handling
+- Globaler Error Boundary
+- Structured Logging
+- User-friendly Error Messages
+- Sentry Integration für Crash Reporting
+
+## Privacy & GDPR
+- Datenminimierung
+- PII-Scrubber für AI-Anfragen
+- Keine Logs mit persönlichen Daten
+- Export/Deletion Features
+
+## mindull-spezifische Regeln
+- Tabs: Breath/Journal/Gratitude/Settings
+- Task-Completion: Atemstart ≤ 3 Taps, ≤ 2s bis Animation
+- Startzeit: Warm <2s, Cold <4s
+- Crash-free Sessions ≥ 99.5%
+- AI-Timeout-Rate < 2%
